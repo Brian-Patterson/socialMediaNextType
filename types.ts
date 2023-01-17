@@ -1,3 +1,5 @@
+//from quicktype
+
 export interface Person {
     status: string;
     code:   number;
@@ -29,4 +31,18 @@ export interface Address {
     county_code:    string;
     latitude:       number;
     longitude:      number;
+}
+
+export interface PostInfo {
+    status: string;
+    code:   number;
+    total:  number;
+    data:  Post[];
+}
+
+export interface Post {
+    title:   string;
+    author:  string;
+    genre:   string;
+    content: string;
 }
