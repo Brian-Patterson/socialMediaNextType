@@ -64,7 +64,10 @@ const Home: NextPage<{peopleData : Person, postData: PostInfo}> = ({peopleData, 
                 width="50"
                 height="50"
                 />
-              <h5 className='content-name'>{person.firstname} {person.lastname} <span>{currentDate}</span></h5>
+              <section className='content-heading'>
+              <h5 className='content-name'>{person.firstname} {person.lastname} </h5>
+              <p className='content-date'>{currentDate}</p>
+              </section>
               
               {postData.data.map((post, id) => {
                 return (

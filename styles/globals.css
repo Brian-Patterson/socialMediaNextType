@@ -93,11 +93,24 @@
   text-align: center;
 }
 
-.content-name {
+.content-heading {
   grid-column: 1/span 2;
   grid-row: 1;
-  text-align: center;
   align-self: center;
+  justify-self: center;
+}
+
+.content-name {
+  /* grid-column: 1/span 2;
+  grid-row: 1; */
+  text-align: left;
+  justify-content: center;
+  align-self: center;
+}
+
+.content-date{
+  display: block;
+  color: rgb(196, 196, 196);
 }
 
 @media (prefers-color-scheme: dark) {
