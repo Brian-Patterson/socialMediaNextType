@@ -12,7 +12,7 @@ export const getStaticProps: GetStaticProps = async () => {
   const res = await fetch('https://fakerapi.it/api/v1/persons?_quantity=10')
   const peopleData : Person = await res.json()
   
-  const res2 = await fetch('https://fakerapi.it/api/v1/texts?_quantity=10&_characters=50')
+  const res2 = await fetch('https://fakerapi.it/api/v1/texts?_quantity=10&_characters=75')
   const postData : PostInfo = await res2.json()
 
   return {
@@ -25,6 +25,18 @@ export const getStaticProps: GetStaticProps = async () => {
 
 
 const Home: NextPage<{peopleData : Person, postData: PostInfo}> = ({peopleData, postData}) => {
+  const monthNames = ["January", "February", "March", "April", "May", "June",
+  "July", "August", "September", "October", "November", "December"
+  ];
+  let today = new Date()
+  today.toString()
+  today.toDateString()
+  let dd = String(today.getDate()).padStart(2, '0')
+  let mm = monthNames[today.getMonth()]
+  let yyyy = today.getFullYear();
+
+  let currentDate = mm + ' ' + dd + ', ' + yyyy
+
   return (
     <>
       <Head>
@@ -52,12 +64,13 @@ const Home: NextPage<{peopleData : Person, postData: PostInfo}> = ({peopleData, 
                 width="50"
                 height="50"
                 />
-              <h5 className='content-name'>{person.firstname} {person.lastname}</h5>
-            {postData.data.map((post, id) => {
-              return (
-                <p key={id} className='content-post'>{post.content}</p>
-                )
-              })}
+              <h5 className='content-name'>{person.firstname} {person.lastname} <span>{currentDate}</span></h5>
+              
+              {postData.data.map((post, id) => {
+                return (
+                  <p key={id} className='content-post'>{post.content}</p>
+                  )
+                })}
             </div>
           )
         })}
