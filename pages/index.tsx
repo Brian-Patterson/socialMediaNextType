@@ -3,7 +3,7 @@ import Image from 'next/image'
 import { Inter } from '@next/font/google'
 import styles from '@/styles/Home.module.css'
 import { Datum, Person, Address, PostInfo, Post } from '@/types'
-import { GetStaticProps, NextPage } from 'next'
+import { GetStaticProps, NextPage, GetStaticPaths } from 'next'
 import { ResponseCookies } from 'next/dist/server/web/spec-extension/cookies'
 
 const inter = Inter({ subsets: ['latin'] })
