@@ -6,6 +6,7 @@ import { Datum, Person, Address, PostInfo, Post } from '@/types'
 import { GetStaticProps, NextPage, GetStaticPaths } from 'next'
 import { ResponseCookies } from 'next/dist/server/web/spec-extension/cookies'
 import Navbar from '@/components/navbar'
+import CurrentDate from '@/components/date'
 import Link from 'next/link'
 
 const inter = Inter({ subsets: ['latin'] })
@@ -27,17 +28,6 @@ export const getStaticProps: GetStaticProps = async () => {
 
 
 const Home: NextPage<{peopleData : Person, postData: PostInfo}> = ({peopleData, postData}) => {
-  const monthNames = ["January", "February", "March", "April", "May", "June",
-  "July", "August", "September", "October", "November", "December"
-  ];
-  let today = new Date()
-  today.toString()
-  today.toDateString()
-  let dd = String(today.getDate()).padStart(2, '0')
-  let mm = monthNames[today.getMonth()]
-  let yyyy = today.getFullYear();
-
-  let currentDate = mm + ' ' + dd + ', ' + yyyy
 
   return (
     <>
@@ -63,7 +53,7 @@ const Home: NextPage<{peopleData : Person, postData: PostInfo}> = ({peopleData, 
                 />
                 <section className='content-heading'>
                   <h5 className='content-name'>{person.firstname} {person.lastname} </h5>
-                  <p className='content-date'>{currentDate}</p>
+                  <CurrentDate />
                 </section>
               </Link>
               

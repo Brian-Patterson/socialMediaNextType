@@ -1,6 +1,9 @@
 import { GetStaticPaths, GetStaticProps, NextPage } from "next"
 import { Person } from "@/types"
 import Navbar from "@/components/navbar"
+import CurrentDate from "@/components/date"
+import Image from "next/image"
+import personStyles from '../styles/person.module.css'
 
 export async function  getStaticPaths() {
     const res = await fetch('https://fakerapi.it/api/v1/persons?_quantity=10')
@@ -32,7 +35,18 @@ const Page: NextPage<{personData: Person}> = ({personData}) => {
                 return (
                     <div>
                         <Navbar />
-                        {person.firstname}
+                        <Image
+                  className='content-image' 
+                  unoptimized
+                  src={person.image}
+                  alt={person.firstname}
+                  width="50"
+                  height="50"
+                />
+                <section className='content-heading'>
+                  <h5 className='content-name'>{person.firstname} {person.lastname} </h5>
+                  <CurrentDate />
+                </section>
                     </div>
                 )
             })}
