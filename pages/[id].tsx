@@ -1,5 +1,6 @@
 import { GetStaticPaths, GetStaticProps, NextPage } from "next"
 import { Person } from "@/types"
+import Navbar from "@/components/navbar"
 
 export async function  getStaticPaths() {
     const res = await fetch('https://fakerapi.it/api/v1/persons?_quantity=10')
@@ -30,6 +31,7 @@ const Page: NextPage<{personData: Person}> = ({personData}) => {
             {personData.data.map((person) => {
                 return (
                     <div>
+                        <Navbar />
                         {person.firstname}
                     </div>
                 )

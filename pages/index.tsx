@@ -5,6 +5,8 @@ import styles from '@/styles/Home.module.css'
 import { Datum, Person, Address, PostInfo, Post } from '@/types'
 import { GetStaticProps, NextPage, GetStaticPaths } from 'next'
 import { ResponseCookies } from 'next/dist/server/web/spec-extension/cookies'
+import Navbar from '@/components/navbar'
+import Link from 'next/link'
 
 const inter = Inter({ subsets: ['latin'] })
 
@@ -45,29 +47,25 @@ const Home: NextPage<{peopleData : Person, postData: PostInfo}> = ({peopleData, 
         <meta name="viewport" content="width=device-width, initial-scale=1" />
         <link rel="icon" href="/favicon.ico" />
       </Head>
-      <header className='main-header'>
-        <h3 className='title-header'>Social Mockida</h3>
-        <section className='userOptions'>
-        <h4 className='login-header'>Login</h4>
-        <h4 className='signup-header'>Sign Up</h4>
-        </section>
-      </header>
+      <Navbar />
       <ul className='main-content'>
         {peopleData.data.map((person) => {
           return (
             <div key={person.id} className='content-items'>
-              <Image
-                className='content-image' 
-                unoptimized
-                src={person.image}
-                alt={person.firstname}
-                width="50"
-                height="50"
+              <Link href={`/${person.id}`}>
+                <Image
+                  className='content-image' 
+                  unoptimized
+                  src={person.image}
+                  alt={person.firstname}
+                  width="50"
+                  height="50"
                 />
-              <section className='content-heading'>
-              <h5 className='content-name'>{person.firstname} {person.lastname} </h5>
-              <p className='content-date'>{currentDate}</p>
-              </section>
+                <section className='content-heading'>
+                  <h5 className='content-name'>{person.firstname} {person.lastname} </h5>
+                  <p className='content-date'>{currentDate}</p>
+                </section>
+              </Link>
               
               {postData.data.map((post, id) => {
                 return (
