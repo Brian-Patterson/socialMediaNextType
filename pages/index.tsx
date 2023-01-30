@@ -52,7 +52,7 @@ const Home: NextPage<{peopleData : Person, postData: PostInfo}> = ({peopleData, 
                   height="50"
                 />
                 <section className='content-heading'>
-                  <h5 className='content-name'>{person.firstname} {person.lastname} </h5>
+                  <h5 className='content-name font-bold underline'>{person.firstname} {person.lastname} </h5>
                   <CurrentDate />
                 </section>
               </Link>
